@@ -1,3 +1,5 @@
+"use client";
+
 import HomepageGsap from "@/components/HomepageGsap";
 
 export default function Home() {
