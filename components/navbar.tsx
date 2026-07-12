@@ -23,9 +23,9 @@ export default function Navbar() {
     ]
 
     return(
-        <div className="border-b-2 h-20 flex items-center justify-between px-5 bg-white text-black">
+        <div className="border-b-2 h-20 flex items-center justify-between px-5 bg-white text-black ">
             <div>
-                <h1 className="text-3xl font-bold cursor-pointer hover:text-4xl transition-all">Monika Meier</h1>
+                <Link href="/" className="text-3xl font-bold cursor-pointer hover:bg-gray-50 hover:text-gray-950 transition-all">Monika Meier</Link>
             </div>
             <div className="sm:flex gap-5 hidden">
                 {links.map((link, index) => (

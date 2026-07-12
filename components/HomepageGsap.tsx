@@ -7,16 +7,35 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import Image from "next/image";
 import Link from "next/link";
+import HorizontalScroll from "@/components/HorizontalScroll";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
 export default function HomepageGsap() {
     const container = useRef(null);
-    const horizontalScroolTrack = useRef(null)
+
+    const cardItems = [
+        {
+            title: "Title 1",
+            description: "Description 1",
+            bgcolor: "bg-blue-600"
+        },
+        {
+            title: "Title 2",
+            description: "Description 2",
+            bgcolor: "bg-yellow-600"
+        },
+        {
+            title: "Title 3",
+            description: "Description 3",
+            bgcolor: "bg-red-600"
+        }
+    ]
+
     useGSAP(
         () => {
             const isMobile = window.matchMedia("(max-width: 767px)").matches;
-            const horizontalTrack = horizontalScroolTrack.current
+
 
             const smoother = ScrollSmoother.create({
                 wrapper: "#smooth-wrapper",
@@ -105,55 +124,8 @@ export default function HomepageGsap() {
                     markers: true,
                 },
             });
-
-
-            const bookContents = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".bookContents",
-                    start: "top top",
-                    end: "+=1000",
-                    scrub: 1,
-                    pin: true,
-                    markers: true
-                }
-            })
-
-            bookContents
-                .from(".bookContentsHeadline", {
-                   scale: 0.7,
-                   ease: "none"
-                })
-                .to(".bookContentsHeadline", {
-                    x: 1000,
-                    ease: "none"
-                })
-
-            gsap.from(".horizontalScroller", {
-                y: 100,
-                stagger: 0.25,
-                duration: 0.8,
-                scrollTrigger: {
-                    trigger: ".horizontalScroller",
-                    start: "top 80%",
-                    once: true,
-                    markers: true,
-                }
-            })
-
-            gsap.to(horizontalTrack, {
-                x: () => -(horizontalTrack.scrollWidth - window.innerWidth),
-                ease: "none",
-                scrollTrigger: {
-                    trigger: ".horizontalSection",
-                    start: "top top",
-                    scrub: 2,
-                    end: () => `+=${horizontalTrack.scrollWidth - window.innerWidth}`,
-                    pin: true,
-                    markers: true,
-                    invalidateOnRefresh: true,
-                },
-            });
             }
+
             const newsletter = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".newsletterSection",
@@ -221,21 +193,8 @@ export default function HomepageGsap() {
                             </div>
                         </div>
                     </section>
-                    <section className="horizontalSection min-h-screen h-auto w-full overflow-hidden ">
-                        <div className="horizontalTrack flex md:flex-row h-auto flex-col" ref={horizontalScroolTrack}>
-                            <div className="min-h-100 flex md:h-screen w-screen shrink-0 flex-col items-center justify-center bg-yellow-400 text-center">
-                                <h1 className="text-4xl font-bold text-black lg:text-7xl">Cooles Argument 1</h1>
-                                <p className="mt-4 text-black lg:text-2xl text-lg">Description</p>
-                            </div>
-                            <div className="min-h-100 flex md:h-screen h-auto w-screen shrink-0 flex-col items-center justify-center bg-green-400 text-center">
-                                <h1 className="text-4xl font-bold text-black lg:text-7xl ">Cooles Argument 2</h1>
-                                <p className="mt-4 text-black lg:text-2xl text-lg">Description</p>
-                            </div>
-                            <div className="min-h-100 flex md:h-screen h-auto w-screen shrink-0 flex-col items-center justify-center bg-red-400 text-center">
-                                <h1 className="text-4xl font-bold text-black lg:text-7xl ">Cooles Argument 3</h1>
-                                <p className="mt-4 text-black lg:text-2xl text-lg">Description</p>
-                            </div>
-                        </div>
+                    <section className="min-h-screen h-auto w-full">
+                        <HorizontalScroll content={cardItems}/>
                     </section>
                     <section className="bg-blue-400 h-screen flex items-center justify-center newsletterSection">
                         <div className="card p-5 flex flex-col items-center justify-start bg-blue-300 rounded-2xl min-w-50 min-h-60 gap-3">
