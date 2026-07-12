@@ -20,17 +20,17 @@ export default function BooksOverview() {
         {
             title: "Title 1",
             description: "Description 1",
-            bgcolor: "bg-blue-600"
+            bgcolor: ""
         },
         {
             title: "Title 2",
             description: "Description 2",
-            bgcolor: "bg-yellow-600"
+            bgcolor: ""
         },
         {
             title: "Title 3",
             description: "Description 3",
-            bgcolor: "bg-red-600"
+            bgcolor: ""
         }
     ]
 
@@ -64,9 +64,9 @@ export default function BooksOverview() {
         { scope: container })
 
     return (
-        <div className="flex items-center justify-center w-full h-full">
-            <div ref={container} className="bookSection overflow-x-hidden flex flex-col gap-5 bg-gray-600 min-h-screen h-auto w-screen items-center justify-center py-10 text-white px-2">
-                <section className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 md:flex-row md:items-center md:justify-center md:gap-14">
+        <div className="flex items-center justify-center w-full h-full text-white">
+            <div ref={container} className="bookSection overflow-x-hidden flex flex-col gap-5 bg-linear-to-br from-yellow-500 to-violet-400 min-h-screen h-auto w-screen items-center justify-center py-10 px-2">
+                <section className="rounded-2xl shadow-2xl p-2 mx-auto flex w-full max-w-6xl flex-col items-center gap-10 md:flex-row md:items-center md:justify-center md:gap-14">
                     <Image src={"/testImage.jpg"} alt={"Profile Picture"} width={300} height={300}  className="image object-cover rounded-2xl bookImage lg:w-150 lg:h-200"/>
                     <div className="flex flex-col md:items-start items-center">
                         <h1 className="text-5xl font-bold bookTitle lg:text-7xl title">Book Name</h1>
@@ -76,7 +76,7 @@ export default function BooksOverview() {
                         </div>
                     </div>
                 </section>
-                <section className="h">
+                <section className="min-h-screen h-auto w-full">
                     <HorizontalScroll content={cardItems}/>
                 </section>
             </div>
