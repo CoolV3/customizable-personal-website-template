@@ -65,7 +65,7 @@ export const siteConfig = {
             titleImage: "/testImage.jpg",
             Images: [],
             sampleUrl: "",
-            buyUrl: "amazon.com",
+            buyUrl: "https://amazon.com",
             buyButtonText: "Buy Now"
         },
         {
@@ -75,7 +75,7 @@ export const siteConfig = {
             titleImage: "/testImage.jpg",
             Images: [],
             sampleUrl: "",
-            buyUrl: "amazon.de",
+            buyUrl: "https://amazon.de",
             buyButtonText: "Buy please"
         }
     ],

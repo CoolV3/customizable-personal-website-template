@@ -8,7 +8,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import {useRef} from "react";
 import {siteConfig} from "@/config/site.config";
 import Button from "@/components/ui/Button";
-
+import {useRouter} from "next/navigation";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -17,53 +17,41 @@ export default function ProductOverview({slideIn}: {slideIn: boolean}) {
     const container = useRef(null);
     const {books} = siteConfig
 
-    const cardItems = [
-        {
-            title: "Title 1",
-            description: "Description 1",
-            bgcolor: ""
-        },
-        {
-            title: "Title 2",
-            description: "Description 2",
-            bgcolor: ""
-        },
-        {
-            title: "Title 3",
-            description: "Description 3",
-            bgcolor: ""
-        }
-    ]
+    const router = useRouter()
+
 
     useGSAP(
         () => {
 
             if (slideIn)  {
+                const items = gsap.utils.toArray(".bookItem");
+
+            items.forEach((item) => {
+                const el = item as HTMLElement;
+
                 const bookTimeline = gsap.timeline({
                     defaults: {
                         duration: 0.5
                     }
-
-
                 })
-            books.forEach((book) => {
+
                 bookTimeline
-                    .from(".image", {
+                    .from(el.querySelector(".bookImage"), {
                         opacity: 0,
                         x: -120
                     })
-                    .from(".title", {
+                    .from(el.querySelector(".bookTitle"), {
                         opacity: 0,
                         x: 120
                     })
-                    .from(".description", {
+                    .from(el.querySelector(".bookDescription"), {
                         opacity: 0,
                         x: 120
                     })
-                    .from(".buyButton", {
+                    .from(el.querySelector(".bookBuyButton"), {
                         opacity: 0,
                         size: 0,
-                        duration: 3
+                        duration: 3,
                     })
             })
             } else {
@@ -119,10 +107,10 @@ export default function ProductOverview({slideIn}: {slideIn: boolean}) {
                         <div key={index} className="flex gap-10 bookItem">
                             <Image src={book.titleImage} alt={"Profile Picture"} width={300} height={300}  className="image object-cover rounded-2xl bookImage lg:w-150 lg:h-200"/>
                             <div className="flex flex-col md:items-start items-center">
-                                <h1 className="text-5xl font-bold bookTitle lg:text-7xl title">{book.title}</h1>
+                                <h1 className="text-5xl font-bold bookTitle lg:text-7xl ">{book.title}</h1>
                                 <p className="py-3 bookDescription max-w-200 lg:text-lg md:text-start text-center description">{book.shortDescription}</p>
                                 <div className="pt-10">
-                                    <Button href={book.buyUrl} className="bookBuyButton" size="lg">{book.buyButtonText}</Button>
+                                    <Button onClick={() => router.push(book.buyUrl)} className="bookBuyButton" size="lg">{book.buyButtonText}</Button>
                                 </div>
                             </div>
                         </div>

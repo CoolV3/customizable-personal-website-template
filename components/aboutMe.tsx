@@ -35,7 +35,7 @@ export default function AboutMeComponent() {
         <div className={`min-h-screen w-full flex flex-col pt-10`}>
             <div className="flex h-screen items-center justify-center ">
                 <div className="flex sm:items-start items-center gap-10 sm:flex-row flex-col px-2">
-                    <Image  src={aboutMe.titleImage}  alt={"Profile Picture"} width={300} height={300} className="rounded-2xl shadow-2xl person-image "/>
+                    <Image src={aboutMe.titleImage}  alt={"Profile Picture"} width={300} height={300} className="rounded-2xl shadow-2xl person-image "/>
                     <div className="flex flex-col sm:items-start items-center">
                         <h1 className="text-5xl font-bold authorName">{aboutMe.fullName}</h1>
                         <p className="authorDescription">{aboutMe.shortDescription}</p>

@@ -6,7 +6,7 @@ export default function BooksPage() {
 
     return (
         <div>
-            <BooksOverview/>
+            <BooksOverview slideIn={true}/>
         </div>
     )
 }

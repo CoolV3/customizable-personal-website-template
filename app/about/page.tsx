@@ -1,3 +1,5 @@
+"use client";
+
 import AboutMeComponent from "@/components/aboutMe";
 import {siteConfig} from "@/config/site.config";
 
