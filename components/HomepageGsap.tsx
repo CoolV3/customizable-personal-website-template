@@ -10,6 +10,7 @@ import Link from "next/link";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import ProductOverview from "@/components/productOverview";
 import Button from "@/components/ui/Button";
+import AboutMeComponent from "@/components/aboutMe";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
@@ -45,30 +46,6 @@ export default function HomepageGsap() {
                 smooth: 1.3,
                 effects: true,
             });
-
-
-            gsap.from(".person-image", {
-                x: -80,
-                opacity: 0,
-                duration: 1,
-                delay: 0.5,
-                ease: "power3.out",
-            });
-
-            gsap.from(".authorName", {
-                y: -20,
-                opacity: 0,
-                duration: 1,
-                delay: 1,
-                ease: "power3.out"
-            })
-            gsap.from(".authorDescription", {
-                y: -50,
-                opacity: 0,
-                delay: 1.5,
-                ease: "power3.out"
-            })
-
 
 
             const newsletter = gsap.timeline({
@@ -117,15 +94,7 @@ export default function HomepageGsap() {
         <main ref={container} className="overflow-x-hidden pt-10">
             <div id="smooth-wrapper">
                 <div id="smooth-content" className="bg-linear-to-br from-yellow-500 to-violet-400">
-                    <section  className="flex h-screen items-center justify-center ">
-                        <div className="flex sm:items-start items-center gap-10 sm:flex-row flex-col px-2">
-                            <Image  src={"/testImage.jpg"}  alt={"Profile Picture"} width={300} height={300} className="rounded-2xl shadow-2xl person-image "/>
-                            <div className="flex flex-col sm:items-start items-center">
-                                <h1 className="text-5xl font-bold authorName">Monika Meier</h1>
-                                <p className="authorDescription">An Authorin based in Germany that enjoys writing books.</p>
-                            </div>
-                        </div>
-                    </section>
+                    <AboutMeComponent/>
                     <section className="backdrop-blur-2xl relative overflow-x-hidden flex flex-col gap-5 min-h-screen h-auto items-center justify-center py-10 text-white px-2 ">
                         <ProductOverview slideIn={false}/>
                     </section>
