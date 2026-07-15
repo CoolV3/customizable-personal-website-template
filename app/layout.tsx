@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import {siteConfig} from "@/config/site.config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +24,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const {general} = siteConfig
+
   return (
     <html
       lang="de"
@@ -32,7 +35,7 @@ export default function RootLayout({
       <div className="w-full z-100 fixed top-0 ">
         <Navbar/>
       </div>
-      <div className="pt-20">
+      <div className={`pt-20 ${general.gradient}`}>
         {children}
       </div>
       </body>

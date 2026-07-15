@@ -1,4 +1,4 @@
-import BooksOverview from "@/components/books";
+import BooksOverview from "@/components/productOverview";
 
 
 export default function BooksPage() {

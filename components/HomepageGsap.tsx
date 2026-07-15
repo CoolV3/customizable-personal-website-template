@@ -8,6 +8,7 @@ import ScrollSmoother from "gsap/ScrollSmoother";
 import Image from "next/image";
 import Link from "next/link";
 import HorizontalScroll from "@/components/HorizontalScroll";
+import ProductOverview from "@/components/productOverview";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
@@ -68,43 +69,6 @@ export default function HomepageGsap() {
             })
 
 
-            if (!isMobile) {
-
-                const bookTimeline = gsap.timeline({
-                    scrollTrigger:  {
-                        trigger: ".bookSection",
-                        start: "top 90%",
-                        end: "center center",
-                        scrub: true,
-                    }
-                })
-
-                bookTimeline
-                    .from(".bookSection", {
-                        scale: 0,
-                        opacity: 0,
-                    })
-
-                    .from(".bookImage", {
-                        y: 120,
-                        opacity: 0,
-                    })
-
-                    .from(".bookTitle", {
-                    y: 120,
-                    opacity: 0,
-                    })
-
-                    .from(".bookDescription", {
-                        y: 120,
-                        opacity: 0,
-                    })
-
-                    .from(".bookBuyButton", {
-                        y: 120,
-                        opacity: 0,
-                    });
-            }
 
             const newsletter = gsap.timeline({
                 scrollTrigger: {
@@ -161,18 +125,8 @@ export default function HomepageGsap() {
                             </div>
                         </div>
                     </section>
-                    <section className="backdrop-blur-2xl relative bookSection overflow-x-hidden flex flex-col gap-5 min-h-screen h-auto items-center justify-center py-10 text-white px-2 ">
-
-                        <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center gap-10 md:flex-row md:items-center md:justify-center md:gap-14">
-                            <Image src={"/testImage.jpg"} alt={"Profile Picture"} width={300} height={300}  className="object-cover rounded-2xl bookImage lg:w-150 lg:h-200"/>
-                            <div className="flex flex-col md:items-start items-center">
-                                <h1 className="text-5xl font-bold bookTitle lg:text-7xl">Book Name</h1>
-                                <p className="py-3 bookDescription max-w-200 lg:text-lg md:text-start text-center">Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description </p>
-                                <div className="pt-10">
-                                    <Link href="https://amazon.de" className="bookBuyButton px-10 py-3 bg-yellow-400 rounded-2xl text-4xl lg:text-4xl text-black hover:bg-yellow-300 transition-colors">Einkaufen</Link>
-                                </div>
-                            </div>
-                        </div>
+                    <section className="backdrop-blur-2xl relative overflow-x-hidden flex flex-col gap-5 min-h-screen h-auto items-center justify-center py-10 text-white px-2 ">
+                        <ProductOverview slideIn={false}/>
                     </section>
                     <section className="min-h-screen h-auto w-full">
                         <h1 className="text-6xl text-black font-bold text-center">From the Book</h1>
