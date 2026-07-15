@@ -10,7 +10,7 @@ export default function Navbar() {
     const links = [
         {
             name: "Über mich",
-            link: "/aboutme"
+            link: "/about"
         },
         {
             name: "Meine Bücher",

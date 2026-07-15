@@ -2,6 +2,9 @@ export type SiteConfig = {
 
     general: {
         gradient: string, // Tailwindcss Gradient Class
+        buttonGradient: string,
+        buttonHover: string, //the class when for example a button is hovered
+        headlineGradient: string
     }
 
     aboutMe: {
@@ -41,7 +44,10 @@ export type SiteConfig = {
 
 export const siteConfig = {
     general: {
-        gradient: "bg-linear-to-br from-yellow-500 to-violet-400"
+        gradient: "bg-linear-to-br from-yellow-500 to-violet-400",
+        buttonGradient: "bg-linear-to-br from-yellow-600 to-yellow-400",
+        buttonHover: "hover:to-yellow-200",
+        headlineGradient: "bg-linear-to-br from-yellow-500 to-yellow-700",
     },
 
     aboutMe: {

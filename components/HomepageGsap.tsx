@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import ProductOverview from "@/components/productOverview";
+import Button from "@/components/ui/Button";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
@@ -142,7 +143,7 @@ export default function HomepageGsap() {
                                 <p className="text-lg newsEmailLabel">Email</p>
                                 <input type="email" placeholder="mustermann@example.com" className="newsEmailInput text-lg border-2 rounded-2xl p-4"/>
                             </div>
-                            <button className="newsButton text-lg px-10 py-4 bg-linear-to-br  from-yellow-500 to-yellow-400 hover:to-yellow-200 rounded-2xl cursor-pointer transition-colors duration-700">Sign up!</button>
+                            <Button className="newsButton">Sign up!</Button>
                         </div>
                     </section>
                 </div>

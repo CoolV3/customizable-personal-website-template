@@ -7,6 +7,7 @@ import {useGSAP} from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {useRef} from "react";
 import {siteConfig} from "@/config/site.config";
+import Button from "@/components/ui/Button";
 
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -121,7 +122,7 @@ export default function ProductOverview({slideIn}: {slideIn: boolean}) {
                                 <h1 className="text-5xl font-bold bookTitle lg:text-7xl title">{book.title}</h1>
                                 <p className="py-3 bookDescription max-w-200 lg:text-lg md:text-start text-center description">{book.shortDescription}</p>
                                 <div className="pt-10">
-                                    <Link href={book.buyUrl} className="bookBuyButton buyButton px-10 py-3 bg-yellow-400 rounded-2xl text-4xl lg:text-4xl text-black hover:bg-yellow-300 transition-colors">{book.buyButtonText}</Link>
+                                    <Button href={book.buyUrl} className="bookBuyButton" size="lg">{book.buyButtonText}</Button>
                                 </div>
                             </div>
                         </div>
