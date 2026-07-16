@@ -11,6 +11,8 @@ import HorizontalScroll from "@/components/HorizontalScroll";
 import ProductOverview from "@/components/productOverview";
 import Button from "@/components/ui/Button";
 import AboutMeComponent from "@/components/aboutMe";
+import Headline from "@/components/ui/Headline";
+import KeepScrollingInfo from "@/components/keepScrollingInfo";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
@@ -95,11 +97,12 @@ export default function HomepageGsap() {
             <div id="smooth-wrapper">
                 <div id="smooth-content" className="bg-linear-to-br from-yellow-500 to-violet-400">
                     <AboutMeComponent/>
+                    <KeepScrollingInfo/>
                     <section className="backdrop-blur-2xl relative overflow-x-hidden flex flex-col gap-5 min-h-screen h-auto items-center justify-center py-10 text-white px-2 ">
                         <ProductOverview slideIn={false}/>
                     </section>
                     <section className="min-h-screen h-auto w-full">
-                        <h1 className="text-6xl text-black font-bold text-center">From the Book</h1>
+                        <Headline className="text-6xl text-black font-bold text-center">From the Book</Headline>
                         <HorizontalScroll content={cardItems}/>
                     </section>
                     <section className="h-screen flex items-center justify-center newsletterSection">

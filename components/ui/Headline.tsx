@@ -7,9 +7,9 @@ const tailwindclass = general.headlineGradient + " " + "text-center bg-clip-text
 
 
 
-export default function Headline({children, sizeClass="text-8xl", className="", ...props}: {children: ReactNode, sizeClass: string, className:string}) {
+export default function Headline({children, sizeClass="text-8xl", className="", ...props}: {children: ReactNode, sizeClass?: string, className:string}) {
 
     return(
-        <h1 className={tailwindclass + "" + sizeClass} {...props}>{children}</h1>
+        <h1 className={tailwindclass + " " + sizeClass + " " + className} {...props}>{children}</h1>
     )
 }
