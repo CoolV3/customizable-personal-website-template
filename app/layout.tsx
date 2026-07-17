@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import {siteConfig} from "@/config/site.config";
+import Footer from "@/components/footer";
+import GlobalSmoothScrool from "@/components/GlobalSmoothScrool";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +38,10 @@ export default function RootLayout({
         <Navbar/>
       </div>
       <div className={`pt-20 ${general.gradient}`}>
-        {children}
+        <GlobalSmoothScrool>{children}</GlobalSmoothScrool>
+      </div>
+      <div className="h-100">
+        <Footer/>
       </div>
       </body>
     </html>
