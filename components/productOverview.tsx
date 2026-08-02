@@ -1,123 +1,137 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useRef } from "react";
+import { useRouter } from "next/navigation";
+
 import gsap from "gsap";
-import {useGSAP} from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import {useRef} from "react";
-import {siteConfig} from "@/config/site.config";
+import { useGSAP } from "@gsap/react";
+
+import { siteConfig } from "@/config/site.config";
 import Button from "@/components/ui/Button";
-import {useRouter} from "next/navigation";
+import Headline from "@/components/ui/Headline";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
+type ProductOverviewProps = {
+    slideIn?: boolean;
+};
 
-export default function ProductOverview({slideIn}: {slideIn: boolean}) {
-    const container = useRef(null);
-    const {books} = siteConfig
+export default function ProductOverview({
+                                            slideIn = false,
+                                        }: ProductOverviewProps) {
+    const container = useRef<HTMLDivElement>(null);
+    const router = useRouter();
 
-    const router = useRouter()
-
+    const { books } = siteConfig;
 
     useGSAP(
         () => {
+            const bookItems =
+                gsap.utils.toArray<HTMLElement>(".bookItem");
 
-            if (slideIn)  {
-                const items = gsap.utils.toArray(".bookItem");
+            bookItems.forEach((bookItem, index) => {
+                const image =
+                    bookItem.querySelector<HTMLElement>(".bookImage");
 
-            items.forEach((item) => {
-                const el = item as HTMLElement;
+                const title =
+                    bookItem.querySelector<HTMLElement>(".bookTitle");
 
-                const bookTimeline = gsap.timeline({
-                    defaults: {
-                        duration: 0.5
-                    }
-                })
+                const description =
+                    bookItem.querySelector<HTMLElement>(".bookDescription");
 
-                bookTimeline
-                    .from(el.querySelector(".bookImage"), {
-                        opacity: 0,
-                        x: -120
-                    })
-                    .from(el.querySelector(".bookTitle"), {
-                        opacity: 0,
-                        x: 120
-                    })
-                    .from(el.querySelector(".bookDescription"), {
-                        opacity: 0,
-                        x: 120
-                    })
-                    .from(el.querySelector(".bookBuyButton"), {
-                        opacity: 0,
-                        size: 0,
-                        duration: 3,
-                    })
-            })
-            } else {
+                const button =
+                    bookItem.querySelector<HTMLElement>(".bookBuyButton");
 
+                const textElements = [title, description, button].filter(
+                    (element): element is HTMLElement => element !== null,
+                );
 
-                const items = gsap.utils.toArray(".bookItem");
-
-                items.forEach((item) => {
-                    const el = item as HTMLElement;
-
-                    const bookTimeline = gsap.timeline({
+                if (slideIn) {
+                    const timeline = gsap.timeline({
                         defaults: {
-                            duration: 0.5
+                            duration: 0.7,
+                            ease: "power3.out",
                         },
-                        scrollTrigger: {
-                            trigger: el,
-                            start: "top 100%",
-                            end: "top 50%",
-                            markers: true,
-                            scrub: 1,
-                        }})
-                    bookTimeline
-                        .from(el.querySelector(".bookImage"), {
-                            y: 120,
-                            opacity: 0,
+                        delay: index * 0.15,
+                    })
+
+
+                        timeline
+                            .from(image, {
+                            autoAlpha: 0,
+                            x: -80,
+                            scale: 0.96,
                         })
-                        .from(el.querySelector(".bookTitle"), {
-                            y: 120,
-                            opacity: 0,
-                        })
-                        .from(el.querySelector(".bookDescription"), {
-                            y: 120,
-                            opacity: 0,
-                        })
-                        .from(el.querySelector(".bookBuyButton"), {
-                            y: 120,
-                            opacity: 0,
-                            scale: 0,
-                        });
+
+                            .from(textElements, {
+                                    autoAlpha: 0,
+                                    x: 80,
+                                    stagger: 0.12,
+                                })
+
+
+                    return;
+                }
+
+
+                const timeline = gsap.timeline({
+                    defaults: {
+                        duration: 0.7,
+                        ease: "power3.out",
+                    },
+                    scrollTrigger: {
+                        trigger: bookItem,
+                        start: "top 85%",
+                    },
                 });
-            }
 
+
+                timeline
+                    .from(image, {
+                        autoAlpha: 0,
+                    y: 60,
+                    scale: 0.96,
+                    })
+
+                    .from(textElements, {
+                        autoAlpha: 0,
+                        y: 50,
+                        stagger: 0.12,
+                    },
+                );
+
+            });
+
+            ScrollTrigger.refresh();
         },
-        { scope: container, dependencies: [slideIn], revertOnUpdate: true })
-
+        {
+            scope: container,
+            dependencies: [slideIn],
+            revertOnUpdate: true,
+        },
+    );
 
     return (
-        <div className="flex items-center justify-center w-full h-full text-white">
-            <div ref={container} className={`bookSection overflow-x-hidden flex flex-col gap-5 min-h-screen h-auto w-screen items-center justify-center py-10 px-2`}>
-                <section className="rounded-2xl p-2 mx-auto flex w-full max-w-6xl flex-col items-center gap-10 md:flex-row md:items-center md:justify-center md:gap-14">
-                    <div className="flex flex-col gap-10">
-                    {books.map((book, index) => (
-                        <div key={index} className="flex gap-10 bookItem">
-                            <Image src={book.titleImage} alt={"Profile Picture"} width={300} height={300}  className="image object-cover rounded-2xl bookImage lg:w-150 lg:h-200"/>
-                            <div className="flex flex-col md:items-start items-center">
-                                <h1 className="text-5xl font-bold bookTitle lg:text-7xl ">{book.title}</h1>
-                                <p className="py-3 bookDescription max-w-200 lg:text-lg md:text-start text-center description">{book.shortDescription}</p>
-                                <div className="pt-10">
-                                    <Button onClick={() => router.push(book.buyUrl)} className="bookBuyButton" size="lg">{book.buyButtonText}</Button>
-                                </div>
+        <section ref={container} className="bookSection">
+            <div className="flex w-full flex-col gap-16 lg:gap-24 p-25 ">
+                {books.map((book, index) => (
+                    <article key={`${book.title}-${index}`} className="bookItem flex w-full flex-col items-center gap-8 sm:flex-row sm:items-start lg:gap-12">
+                        <div className="w-full max-w-64 shrink-0 sm:w-56 lg:w-72">
+                            <Image src={book.titleImage} width={600} height={900} alt={"Title of the Produkt"} className="bookImage aspect-2/3 h-auto w-full rounded-2xl object-cover shadow-xl"/>
+                        </div>
+
+                        <div className="flex min-w-0 flex-1 flex-col items-center text-center sm:items-start sm:text-left">
+                            <Headline className="bookTitle" sizeClass="text-3xl sm:text-4xl lg:text-5xl">{book.title}</Headline>
+                            <p className="bookDescription mt-4 max-w-2xl text-base leading-7 text-white/80 sm:text-lg">{book.shortDescription}</p>
+                            <div className="mt-8">
+                                <Button type="button" onClick={() => router.push(book.buyUrl)} className="bookBuyButton" size="lg">{book.buyButtonText}</Button>
                             </div>
                         </div>
-                    ))}
-                    </div>
-                </section>
+                    </article>
+                ))}
             </div>
-        </div>
-    )
+        </section>
+    );
 }

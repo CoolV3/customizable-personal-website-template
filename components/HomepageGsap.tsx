@@ -13,11 +13,13 @@ import Button from "@/components/ui/Button";
 import AboutMeComponent from "@/components/aboutMe";
 import Headline from "@/components/ui/Headline";
 import KeepScrollingInfo from "@/components/keepScrollingInfo";
+import {siteConfig} from "@/config/site.config";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
 export default function HomepageGsap() {
     const container = useRef(null);
+    const {bookSamples} = siteConfig
 
     const cardItems = [
         {
@@ -40,15 +42,6 @@ export default function HomepageGsap() {
     useGSAP(
         () => {
             const isMobile = window.matchMedia("(max-width: 767px)").matches;
-
-
-            const smoother = ScrollSmoother.create({
-                wrapper: "#smooth-wrapper",
-                content: "#smooth-content",
-                smooth: 1.3,
-                effects: true,
-            });
-
 
             const newsletter = gsap.timeline({
                 scrollTrigger: {
@@ -85,25 +78,23 @@ export default function HomepageGsap() {
                     scale: 0
                 })
 
-            return () => {
-                smoother.kill();
-            };
+
         },
         { scope: container }
     );
 
     return (
         <main ref={container} className="overflow-x-hidden pt-10">
-            <div id="smooth-wrapper">
-                <div id="smooth-content" className="bg-linear-to-br from-yellow-500 to-violet-400">
+            <div>
+                <div className="bg-linear-to-br from-yellow-500 to-violet-400">
                     <AboutMeComponent/>
                     <KeepScrollingInfo/>
-                    <section className="backdrop-blur-2xl relative overflow-x-hidden flex flex-col gap-5 min-h-screen h-auto items-center justify-center py-10 text-white px-2 ">
+                    <section className="flex min-h-screen h-auto items-center justify-center text-white">
                         <ProductOverview slideIn={false}/>
                     </section>
                     <section className="min-h-screen h-auto w-full">
                         <Headline className="text-6xl text-black font-bold text-center">From the Book</Headline>
-                        <HorizontalScroll content={cardItems}/>
+                        <HorizontalScroll content={bookSamples}/>
                     </section>
                     <section className="h-screen flex items-center justify-center newsletterSection">
                         <div className="card p-5 flex flex-col items-center justify-start shadow-2xl rounded-2xl min-w-50 min-h-60 gap-3">

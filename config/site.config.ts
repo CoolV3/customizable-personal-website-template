@@ -1,3 +1,5 @@
+import * as url from "node:url";
+
 export type SiteConfig = {
 
     general: {
@@ -26,8 +28,8 @@ export type SiteConfig = {
     }[]
 
     bookSamples: { //for example a Word document
-        chapterHeadline: string,
-        content: string
+        title: string,
+        description: string
     }[]
 
     newsletter: {
@@ -39,6 +41,16 @@ export type SiteConfig = {
     contact: {
         heading: string,
         email: string,
+    }
+
+    footer: {
+        footerHeadline: string,
+        hoverEffect: boolean,
+        icons: {
+            enabled: boolean,
+            icon: "telegram" | "instagram" | "github",
+            link: string
+        }[]
     }
 }
 
@@ -82,12 +94,12 @@ export const siteConfig = {
 
     bookSamples: [   //for example a Word document
         {
-            chapterHeadline: "An Adventure",
-            content: "Sample Book Content"
+            title: "An Adventure",
+            description: "Sample Book Content"
         },
         {
-            chapterHeadline: "An Adventure 2",
-            content: "Sample Book Content 2"
+            title: "An Adventure 2",
+            description: "Sample Book Content 2"
         }
     ],
 
@@ -100,6 +112,28 @@ export const siteConfig = {
     contact: {
         heading: "Contact me",
         email: "text@example.com",
+    },
+
+    footer: {
+        footerHeadline: "Max Mustermann",
+        hoverEffect: true,
+        icons: [
+            {
+                enabled: true,
+                icon: "telegram",
+                link: "https://telegram.com"
+            },
+            {
+                enabled: true,
+                icon: "instagram",
+                link: "https://instagram.com"
+            },
+            {
+                enabled: true,
+                icon: "github",
+                link: "https://github.com"
+            },
+        ]
     }
 
 } satisfies SiteConfig
