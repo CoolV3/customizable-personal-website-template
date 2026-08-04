@@ -3,24 +3,13 @@
 import Link from "next/link";
 import { MoveUpRight, Menu } from 'lucide-react';
 import {useState} from "react";
+import {siteConfig} from "@/config/site.config";
 
 export default function Navbar() {
     const [navOpen, setNavOpen] = useState(false)
+    const {nav} = siteConfig
+    const links = nav.links
 
-    const links = [
-        {
-            name: "Über mich",
-            link: "/about"
-        },
-        {
-            name: "Meine Bücher",
-            link: "/books"
-        },
-        {
-            name: "Kontakt",
-            link: "/contact"
-        },
-    ]
 
     return(
         <div className="border-b-2 h-20 flex items-center justify-between px-5 bg-white text-black ">
@@ -29,7 +18,7 @@ export default function Navbar() {
             </div>
             <div className="sm:flex gap-5 hidden">
                 {links.map((link, index) => (
-                    <Link href={link.link} key={index} className="cursor-pointer text-2xl flex group items-center ">{link.name} <MoveUpRight className="size-0 group-hover:size-8 transition-all duration-500 delay-100"/></Link>
+                    <Link href={link.link} key={index} className="cursor-pointer text-2xl flex group items-center ">{link.name} {nav.arrowEffect && (<MoveUpRight className="size-0 group-hover:size-8 transition-all duration-500 delay-100"/>)}</Link>
                 ))}
             </div>
             <div className="sm:hidden">

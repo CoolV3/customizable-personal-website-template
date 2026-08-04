@@ -52,6 +52,14 @@ export type SiteConfig = {
             link: string
         }[]
     }
+
+    nav: {
+        arrowEffect: boolean,
+        links: {
+            name: string,
+            link: string,
+        }[]
+    }
 }
 
 export const siteConfig = {
@@ -134,6 +142,25 @@ export const siteConfig = {
                 link: "https://github.com"
             },
         ]
+    },
+
+    nav: {
+        arrowEffect: true,
+        links: [
+            {
+                name: "About Me",
+                link: "/about"
+            },
+            {
+                name: "My Projects",
+                link: "/books"
+            },
+            {
+                name: "Contact Me",
+                link: "/contact"
+            },
+        ]
+
     }
 
 } satisfies SiteConfig
