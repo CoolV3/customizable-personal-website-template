@@ -7,14 +7,14 @@ import {siteConfig} from "@/config/site.config";
 
 export default function Navbar() {
     const [navOpen, setNavOpen] = useState(false)
-    const {nav} = siteConfig
+    const {nav, aboutMe} = siteConfig
     const links = nav.links
 
 
     return(
         <div className="border-b-2 h-20 flex items-center justify-between px-5 bg-white text-black ">
             <div>
-                <Link href="/" className="text-3xl font-bold cursor-pointer hover:bg-gray-50 hover:text-gray-950 transition-all">Monika Meier</Link>
+                <Link href="/" className="text-3xl font-bold cursor-pointer hover:bg-gray-50 hover:text-gray-950 transition-all">{aboutMe.fullName}</Link>
             </div>
             <div className="sm:flex gap-5 hidden">
                 {links.map((link, index) => (
