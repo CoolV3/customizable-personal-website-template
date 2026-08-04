@@ -3,7 +3,8 @@ This is a small personal website that you can customize to your own needs.
 
 
 ## How to customize
-Firstly clone the repository. Then open the file `/config/site.config.ts`. From there you can customize almost everything that the site has.
+Firstly clone the repository. Then open the file `/config/site.config.ts`. From there you can customize almost everything that the site has like
+the AboutMe Page, your projects, and the nav bar or footer. 
 
 ## How to run yourself
 

@@ -26,6 +26,9 @@ export default function HorizontalScroll({ content }: { content: ScroolContent[]
 
             if (!isMobile) {
 
+                if (horizontalTrack == null) {
+                    return
+                }
 
                 gsap.to(horizontalTrack, {
                     x: () => -(horizontalTrack.scrollWidth - window.innerWidth),
