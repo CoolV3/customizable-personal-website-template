@@ -1,6 +1,8 @@
 # Personal Website Template
 This is a small personal website that you can customize to your own needs. If you sell stuff you can also showcase it here and add a buying link.
 
+## Tech Stack
+This is a next.js app with tailwindcss for styling and gsap for the animations. And I used React icons for the icons.
 
 ## How to customize
 Firstly clone the repository. Then open the file `/config/site.config.ts`. From there you can customize almost everything that the site has like
