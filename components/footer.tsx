@@ -11,7 +11,7 @@ export default function Footer() {
     const links = nav.links
     return (
         <div>
-            <div className="h-100 p-5 flex justify-between pb-20">
+            <div className="h-100 p-5 flex justify-between pb-20 border-t-2">
                 <div className="flex flex-col justify-between">
                     <div>
                         <Headline className="text-start" sizeClass="text-5xl">Max Mustermann</Headline>

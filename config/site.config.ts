@@ -79,9 +79,9 @@ export const siteConfig = {
 
     books: [
         {
-            title: "Book Title 1",
-            shortDescription: "A short description about the first book",
-            longDescription: "A long description about the first book",
+            title: "Product Title 1",
+            shortDescription: "A short description about the first product",
+            longDescription: "A long description about the first product",
             titleImage: "/testImage.jpg",
             Images: [],
             sampleUrl: "",
@@ -89,9 +89,19 @@ export const siteConfig = {
             buyButtonText: "Buy Now"
         },
         {
-            title: "Book Title 2",
-            shortDescription: "A short description about the second book",
-            longDescription: "A long description about the second book",
+            title: "Product Title 2",
+            shortDescription: "A short description about the second product",
+            longDescription: "A long description about the second product",
+            titleImage: "/testImage.jpg",
+            Images: [],
+            sampleUrl: "",
+            buyUrl: "https://amazon.de",
+            buyButtonText: "Buy please"
+        },
+        {
+            title: "Product Title 3",
+            shortDescription: "A short description about the second product",
+            longDescription: "A long description about the second product",
             titleImage: "/testImage.jpg",
             Images: [],
             sampleUrl: "",
@@ -100,7 +110,7 @@ export const siteConfig = {
         }
     ],
 
-    bookSamples: [   //for example a Word document
+    bookSamples: [  
         {
             title: "An Adventure",
             description: "Sample Book Content"

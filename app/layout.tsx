@@ -33,16 +33,16 @@ export default function RootLayout({
       lang="de"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className={"min-h-full flex flex-col" + " " + general.gradient}>
-      <div className="w-full z-100 fixed top-0 ">
+      <body className="min-h-full flex flex-col">
+      <header className="w-full z-100 fixed top-0">
         <Navbar/>
-      </div>
-      <div className={`pt-20 flex grow h-screens ${general.gradient}`}>
-        <GlobalSmoothScrool>{children}</GlobalSmoothScrool>
-      </div>
-      <div className="w-full z-1">
-        <Footer/>
-      </div>
+      </header>
+      <GlobalSmoothScrool>
+        <div className="flex min-h-screen flex-col pt-20">
+          <main className="w-full grow">{children}</main>
+          <Footer/>
+        </div>
+      </GlobalSmoothScrool>
       </body>
     </html>
   );

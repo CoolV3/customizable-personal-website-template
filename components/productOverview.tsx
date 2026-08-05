@@ -115,14 +115,14 @@ export default function ProductOverview({
 
     return (
         <section ref={container} className="bookSection">
-            <div className="flex w-full flex-col gap-16 lg:gap-24 p-25 ">
+            <div className="flex w-full flex-col gap-16 pt-25 ">
                 {books.map((book, index) => (
                     <article key={`${book.title}-${index}`} className="bookItem flex w-full flex-col items-center gap-8 sm:flex-row sm:items-start lg:gap-12">
                         <div className="w-full max-w-64 shrink-0 sm:w-56 lg:w-72">
                             <Image src={book.titleImage} width={600} height={900} alt={"Title of the Produkt"} className="bookImage aspect-2/3 h-auto w-full rounded-2xl object-cover shadow-xl"/>
                         </div>
 
-                        <div className="flex min-w-0 flex-1 flex-col items-center text-center sm:items-start sm:text-left">
+                        <div className="flex min-w-0 flex-col items-center text-center sm:items-start sm:text-left">
                             <Headline className="bookTitle" sizeClass="text-3xl sm:text-4xl lg:text-5xl">{book.title}</Headline>
                             <p className="bookDescription mt-4 max-w-2xl text-base leading-7 text-white/80 sm:text-lg">{book.shortDescription}</p>
                             <div className="mt-8">

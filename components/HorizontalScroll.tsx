@@ -1,12 +1,11 @@
 "use client";
 
 import {useGSAP} from "@gsap/react";
-import ScrollSmoother from "gsap/ScrollSmoother";
 import gsap from "gsap";
 import {useRef} from "react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 type ScroolContent = {
     title: string
@@ -37,7 +36,7 @@ export default function HorizontalScroll({ content }: { content: ScroolContent[]
                         trigger: ".horizontalSection",
                         start: "top top",
                         scrub: 2,
-                        end: () => `+=${horizontalTrack.scrollWidth - window.innerWidth}`,
+                        end: () => `+= ${horizontalTrack.scrollWidth - window.innerWidth}`,
                         pin: true,
                         markers: true,
                         invalidateOnRefresh: true,
@@ -50,7 +49,7 @@ export default function HorizontalScroll({ content }: { content: ScroolContent[]
 
     return(
         <div ref={container} className="horizontalScroller">
-            <section className="horizontalSection min-h-screen h-auto w-full overflow-hidden ">
+            <div className="horizontalSection min-h-screen h-auto w-full overflow-hidden ">
                 <div className="horizontalTrack flex md:flex-row h-auto flex-col" ref={horizontalScrollTrack}>
                     {content.map((card, index) => (
                         <div key={index} className={`min-h-100 flex md:h-screen w-screen shrink-0 flex-col items-center justify-center text-center ${card.bgcolor}`}>
@@ -59,7 +58,7 @@ export default function HorizontalScroll({ content }: { content: ScroolContent[]
                         </div>
                     ))}
                 </div>
-            </section>
+            </div>
         </div>
     )
 }
