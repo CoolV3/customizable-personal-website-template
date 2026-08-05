@@ -8,7 +8,13 @@ the AboutMe Page, your products, and the nav bar or footer.
 
 ## How to run yourself
 
-Run a development server with 
+You need to install all dependencies with
+
+```bash
+pnpm install
+```
+
+Then run a development server with 
 
 ```bash
 pnpm dev
