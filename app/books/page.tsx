@@ -1,3 +1,5 @@
+"use client"
+
 import BooksOverview from "@/components/productOverview";
 import {siteConfig} from "@/config/site.config";
 

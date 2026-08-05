@@ -36,7 +36,7 @@ export default function HorizontalScroll({ content }: { content: ScroolContent[]
                         trigger: ".horizontalSection",
                         start: "top top",
                         scrub: 2,
-                        end: () => `+= ${horizontalTrack.scrollWidth - window.innerWidth}`,
+                        end: () => `+=${horizontalTrack.scrollWidth - window.innerWidth}`,
                         pin: true,
                         markers: true,
                         invalidateOnRefresh: true,

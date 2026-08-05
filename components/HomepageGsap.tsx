@@ -89,14 +89,14 @@ export default function HomepageGsap() {
                 <div className="">
                     <AboutMeComponent/>
                     <KeepScrollingInfo/>
-                    <div className="flex min-h-screen h-auto items-center justify-center text-white">
+                    <section className="flex min-h-screen h-auto items-center justify-center text-white">
                         <ProductOverview slideIn={false}/>
-                    </div>
+                    </section>
                     <div className="min-h-screen h-auto w-full">
                         <Headline className="text-6xl text-black font-bold text-center">From the Book</Headline>
                         <HorizontalScroll content={bookSamples}/>
                     </div>
-                    <div className="h-screen flex items-center justify-center newsletterSection">
+                    <section className="h-screen flex items-center justify-center newsletterSection">
                         <div className="card p-5 flex flex-col items-center justify-start shadow-2xl rounded-2xl min-w-50 min-h-60 gap-3">
                             <div className="flex flex-col items-center">
                                 <h1 className="text-4xl newsTitle">Newsletter</h1>
@@ -108,7 +108,7 @@ export default function HomepageGsap() {
                             </div>
                             <Button className="newsButton">Sign up!</Button>
                         </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </main>
