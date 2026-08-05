@@ -115,7 +115,7 @@ export default function ProductOverview({
 
     return (
         <section ref={container} className="bookSection">
-            <div className="flex w-full flex-col gap-16 pt-25 ">
+            <div className="flex w-full flex-col gap-16 pt-25 pb-10">
                 {books.map((book, index) => (
                     <article key={`${book.title}-${index}`} className="bookItem flex w-full flex-col items-center gap-8 sm:flex-row sm:items-start lg:gap-12">
                         <div className="w-full max-w-64 shrink-0 sm:w-56 lg:w-72">
